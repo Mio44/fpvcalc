@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FPV Calculator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="jquery.mobile-1.4.5.min.css" />
+        <script src="jquery-2.1.4.min.js"></script>
+        <script src="jquery.mobile-1.4.5.min.js"></script>
+        <script src="fpvcalc.js"></script>
+    </head>
+    <body>
+
+        <div data-role="page">
+
+            <div data-role="header" data-position="fixed">
+                <div class="ui-grid-c" style="text-align:center;">
+                    <div class="ui-block-a"><span id="display-minDis">-- MHz</span></div>
+                    <div class="ui-block-b"><span id="display-imdMinDis">-- MHz</span></div>
+                    <div class="ui-block-c"><span id="display-imdRating">--</span></div>
+                    <div class="ui-block-d"><span id="display-maxDis">-- MHz</span></div>
+                    <div class="ui-block-a"><sub style="font-weight:normal;">min</sub></div>
+                    <div class="ui-block-b"><sub style="font-weight:normal;">IMD min</sub></div>
+                    <div class="ui-block-c"><sub style="font-weight:normal;">IMD rating</sub></div>
+                    <div class="ui-block-d"><sub style="font-weight:normal;">max</sub></div>
+                </div>
+            </div><!-- /header -->
+
+            <div data-role="main" class="ui-content">
+                <div class="ui-body ui-body-d ui-corner-all">
+                    <div data-role="controlgroup" id="pilots" class="ui-mini">
+                        <!-- pilots are added here -->
+                    </div>
+                </div>
+                <div class="ui-field-contain ui-mini">
+                    <button id="append" data-inline="true">Add Pilot</button>
+                </div>
+            </div><!-- /content -->
+
+        </div><!-- /page -->
+    </body>
+</html>
