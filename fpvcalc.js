@@ -146,18 +146,20 @@ function setPilotFreqLayout(layout) {
 
 function buildPilotWidget$(pilot) {
     var els = "";
-    els += "<fieldset class='ui-field-contain ui-corner-all ui-shadow pilot' id='"+pilot.id+"' style='background-color: #e9e9e9; margin: 10px 0; padding: 0 25px;'>";
-    els +=     "<div class='ui-grid-a'>";
-    els +=         "<div class='ui-block-a' style='width:60%;'>";
+    els += "<div class='ui-body ui-corner-all pilot' id='"+pilot.id+"' style='background-color:#e9e9e9;margin-bottom:0.4em;'>";
+    els +=     "<div class='ui-grid-b'>";
+    els +=         "<div class='ui-block-a'>";
     els +=             "<div class='ui-field-contain'><label for='"+pilot.uiID+"-name' class='ui-hidden-accessible'>Name:</label><input type='text' id='"+pilot.uiID+"-name' value='"+pilot.name+"' class='selector-name'></input></div>";
-    els +=             "<div data-role='controlgroup' data-type='horizontal'>";
+    els +=             "<div class='ui-field-contain'><label style='margin-top:0.75em;' for='"+pilot.uiID+"-frequency'>Frequency:</label><h3 id='"+pilot.uiID+"-frequency' class='display-frequency'>--</h3></div>";
+    els +=         "</div>";
+    els +=         "<div class='ui-block-b'>";
+    els +=             "<div data-role='controlgroup'>";
     for (band in BANDS) {
         els +=             "<label for='"+pilot.uiID+"-band"+band+"'>Band "+band+"</label><input type='checkbox' id='"+pilot.uiID+"-band"+band+"' band='"+band+"' class='selector-band'></input>";
     }
     els +=             "</div>";
-    els +=             "<div class='ui-field-contain'><label style='margin-top:0.75em;' for='"+pilot.uiID+"-frequency'>Frequency:</label><h3 id='"+pilot.uiID+"-frequency' class='display-frequency'>--</h3></div>";
     els +=         "</div>";
-    els +=         "<div class='ui-block-b' style='width:40%;'>";
+    els +=         "<div class='ui-block-c' style='text-align:right;'>";
     els +=             "<div class='ui-field-contain'><label for='"+pilot.uiID+"-fixed'>Fixed:</label><input data-role='flipswitch' type='checkbox' id='"+pilot.uiID+"-fixed' class='selector-fixed'></input></div>";
     els +=             "<div class='ui-field-contain' style='display:none;'><label for='"+pilot.uiID+"-channel'>Channel:</label>";
     els +=             "<select id='"+pilot.uiID+"-channel' data-inline='true' class='selector-channel'>";
@@ -167,7 +169,7 @@ function buildPilotWidget$(pilot) {
     els +=             "</select></div>";
     els +=         "</div>";
     els +=     "</div>";
-    els += "</fieldset>";
+    els += "</div>";
     return $(els);
 }
 
@@ -238,6 +240,11 @@ function setupListeners($widget) {
         setPilotFreqs(i, [BANDS[$widget.data("band")][$(this).val() - 1]]);
         calculateFreqs();
     });
+		$widget.find(".selector-name").on("blur", function(e) {
+				var $widget = getPilotWidget$(this);
+        var i = getIndex($widget);
+				setPilotName(i, $(this).val());
+	  });
 }
 
 function calculateFreqs() {
