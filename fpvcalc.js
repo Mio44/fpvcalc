@@ -283,10 +283,10 @@ function calculateFreqs() {
         getSelector$(i, "frequency").html(band+(channel + "")+" - "+freq);
         getSelector$(i, "channel").val(channel).selectmenu("refresh");
     });
-    $("#display-minDis").html(freqLayout.minDis + " Mhz");
-    $("#display-imdMinDis").html(freqLayout.imdMinDis + " Mhz");
+    $("#display-minDis").html(freqLayout.minDis + " MHz");
+    $("#display-imdMinDis").html(freqLayout.imdMinDis + " MHz");
     $("#display-imdRating").html(freqLayout.imdRating);
-    $("#display-maxDis").html(freqLayout.maxDis + " Mhz");
+    $("#display-maxDis").html(freqLayout.maxDis + " MHz");
 }
 
 ( function( $, undefined ) {
