@@ -50,7 +50,7 @@ function getMinDisVector(solution) {
 
 function getMinDisCoeff(solution) {
     var vector = getMinDisVector(solution);
-    return vector[0] + vector[1];
+    return vector[0] + (1000*vector[1]);
 }
 
 function buildFreqDescriptor(freqs) {
