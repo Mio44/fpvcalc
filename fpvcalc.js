@@ -170,7 +170,7 @@ function buildPilotWidget$(pilot) {
     els +=         "</div>";
     els +=     "</div>";
     els += "</div>";
-    return $(els);
+    return $(els).hide();
 }
 
 function getIndex($widget) {
@@ -191,9 +191,11 @@ function setupListeners($widget) {
         var $widget = $(this);
         var i = getIndex($widget);
         removePilot(i);
-        $widget.remove();
-        $("#pilots").controlgroup("refresh");
-        calculateFreqs();
+				$widget.fadeOut(function() {
+					$widget.remove();	
+					$("#pilots").controlgroup("refresh");
+	        calculateFreqs();
+				});      
     })
     $widget.find(".selector-band").on("change", function (e) {
         var $widget = getPilotWidget$(this);
@@ -298,7 +300,9 @@ $( document ).bind( "pagecreate", function( e ) {
         setupListeners($widget);
         $widget.appendTo($pilots.controlgroup("container")).enhanceWithin();
         $pilots.controlgroup("refresh");
-        calculateFreqs();
+				$widget.fadeIn(function() {
+					calculateFreqs();
+				});
     });
 });
 })( jQuery );
