@@ -170,7 +170,7 @@ function buildPilotWidget$(pilot) {
     els +=         "</div>";
     els +=     "</div>";
     els += "</div>";
-    return $(els).hide();
+    return $(els);
 }
 
 function getIndex($widget) {
@@ -191,7 +191,7 @@ function setupListeners($widget) {
         var $widget = $(this);
         var i = getIndex($widget);
         removePilot(i);
-				$widget.fadeOut(function() {
+				$widget.animate({opacity:0}, function() {
 					$widget.remove();	
 					$("#pilots").controlgroup("refresh");
 	        calculateFreqs();
@@ -296,11 +296,11 @@ $( document ).bind( "pagecreate", function( e ) {
     $( "#append", e.target ).on( "click", function( e ) {
         var pilot = addPilot();
         var $pilots = $("#pilots");
-        var $widget = buildPilotWidget$(pilot);
+        var $widget = buildPilotWidget$(pilot).css("opacity", 0);
         setupListeners($widget);
         $widget.appendTo($pilots.controlgroup("container")).enhanceWithin();
         $pilots.controlgroup("refresh");
-				$widget.fadeIn(function() {
+				$widget.animate({opacity: 1}, function() {
 					calculateFreqs();
 				});
     });
