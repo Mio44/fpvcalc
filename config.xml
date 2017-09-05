@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "sk.ussum.fpvcalc"
+    versionCode = "10"
+    version     = "1.0.0" >
+
+<!-- versionCode is optional and Android only -->
+
+  <name>FPVCalc</name>
+
+  <description>
+		Calculates the best frequencies from the 5.8Ghz band for a group of FPV pilots.
+  </description>
+
+  <author href="https://build.phonegap.com" email="temp44@szm.sk">
+		Richard Bartelt
+  </author>
+
+</widget>
